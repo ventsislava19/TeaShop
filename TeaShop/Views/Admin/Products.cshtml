@@ -1,0 +1,70 @@
+@model List<TeaShop.Models.Product>
+
+@{
+    ViewData["Title"] = "Manage Products";
+}
+
+<div class="account-page">
+    <div class="admin-header">
+        <h2>Manage Products</h2>
+        <a asp-action="CreateProduct" class="btn btn-primary">Add Product</a>
+    </div>
+
+    <div class="account-section">
+        <table class="cart-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Origin</th>
+                <th>Price</th>
+                <th>Caffeine</th>
+                <th>Stock</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var p in Model)
+            {
+                <tr>
+                    <td><strong>@p.Name</strong></td>
+                    <td>@(p.Category?.Name ?? "-")</td>
+                    <td>@p.OriginCountry</td>
+                    <td>€@p.Price.ToString("F2")</td>
+                    <td>
+                        <span class="product-caffeine @(p.Caffeine == TeaShop.Models.CaffeineType.CaffeineFree ? "caffeine-free" : "caffeinated")">
+                            @(p.Caffeine == TeaShop.Models.CaffeineType.CaffeineFree ? "Caffeine Free" : "Caffeinated")
+                        </span>
+                    </td>
+                    <td>@p.Stock</td>
+                    <td>
+                        <div class="actions-cell">
+                            <a asp-action="EditProduct" asp-route-id="@p.Id"
+                               class="btn btn-secondary btn-sm">
+                                Edit
+                            </a>
+                            <form asp-action="DeleteProduct" asp-route-id="@p.Id" method="post"
+                                  onsubmit="return confirm('Delete this product?');">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="back-link">
+        <a asp-action="Index">Back to Admin Panel</a>
+    </div>
+</div>
+
+
+
+
+
+
+

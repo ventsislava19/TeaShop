@@ -1,0 +1,66 @@
+@model TeaShop.Models.Order
+
+@{
+    ViewData["Title"] = "Order Confirmed";
+}
+
+<div class="checkout-page">
+    <div class="checkout-card confirmation-card">
+        <h2 class="confirmation-title">Order Confirmed!</h2>
+        <p class="confirmation-subtitle">
+            Thank you for your order. Your tea is on its way!
+        </p>
+
+        <div class="order-card">
+            <div class="order-header">
+                <strong>Order #@Model.Id</strong>
+                <span class="order-status status-paid">@Model.Status</span>
+            </div>
+            <p class="order-date">
+                @Model.CreatedAt.ToString("dd MMMM yyyy, HH:mm")
+            </p>
+
+            <table class="cart-table">
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model.OrderItems)
+                {
+                    <tr>
+                        <td>@item.Product?.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>€@((item.Price * item.Quantity).ToString("F2"))</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+            <p class="order-total">
+                <strong>Total: €@Model.Total.ToString("F2")</strong>
+            </p>
+
+            <p class="order-shipping">
+                Shipping to: @Model.ShippingAddress, @Model.ShippingCity @Model.ShippingPostalCode
+            </p>
+
+            @await Html.PartialAsync("_OrderSupportNotice")
+        </div>
+
+        <div class="confirmation-actions">
+            <a asp-controller="Order" asp-action="History" class="btn btn-secondary">
+                View All Orders
+            </a>
+            <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+                Continue Shopping
+            </a>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,158 @@
+﻿@model TeaShop.ViewModels.ProductCatalogViewModel
+
+@{
+    ViewData["Title"] = "Our Teas";
+}
+
+<div class="catalog-page">
+
+    @* --- FILTERS --- *@
+    @* This form uses GET, so filters appear in the URL, meaning filter links are shareable/bookmarkable. *@
+    <form method="get" asp-controller="Home" asp-action="Index" class="filters-form">
+
+        <div class="filters-row">
+            @* Search box *@
+            <div class="filter-group">
+                <label for="search">Search</label>
+                <input type="text" id="search" name="search" value="@Model.SearchQuery"
+                       placeholder="Search teas..."/>
+            </div>
+
+            @* Country dropdown *@
+            <div class="filter-group">
+                <label for="country">Origin</label>
+                <select id="country" name="country">
+                    <option value="">All Countries</option>
+                    @foreach (var c in Model.AvailableCountries)
+                    {
+                        <option value="@c" selected="@(Model.SelectedCountry == c ? "selected" : null)">@c</option>
+                    }
+                </select>
+            </div>
+            
+            @* Category filter *@
+            <div class="filter-group">
+                <label for="categoryId">Category</label>
+                <select id="categoryId" name="categoryId">
+                    <option value="">All Categories</option>
+                    @foreach (var cat in Model.AvailableCategories)
+                    {
+                        <option value="@cat.Id" selected="@(Model.SelectedCategoryId == cat.Id ? "selected" : null)">@cat.Name</option>
+                    }
+                </select>
+            </div>
+
+            @* Caffeine filter *@
+            <div class="filter-group">
+                <label for="caffeine">Caffeine</label>
+                <select id="caffeine" name="caffeine">
+                    <option value="">All</option>
+                    <option value="Caffeinated"
+                            selected="@(Model.SelectedCaffeine == "Caffeinated" ? "selected" : null)">
+                        Caffeinated
+                    </option>
+                    <option value="CaffeineFree"
+                            selected="@(Model.SelectedCaffeine == "CaffeineFree" ? "selected" : null)">
+                        Caffeine Free
+                    </option>
+                </select>
+            </div>
+
+            <div class="filter-group filter-buttons">
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Reset Filters</a>
+            </div>
+        </div>
+    </form>
+
+    @* --- PRODUCT COUNT --- *@
+    <p class="product-count">Showing @Model.Products.Count() teas</p>
+
+    @* --- PRODUCT GRID --- *@
+    @* This is the Razor foreach. *@
+    <div class="product-grid">
+        @foreach (var product in Model.Products)
+        {
+            <div class="product-card">
+                <div class="product-image">
+                    @if (!string.IsNullOrEmpty(product.Image))
+                    {
+                        <img src="~/images/teas/@product.Image" alt="@product.Name"/>
+                    }
+                    else
+                    {
+                        <div class="no-image">🍵</div>
+                    }
+                </div>
+
+                <div class="product-info">
+                    <h3>@product.Name</h3>
+                    <p class="product-origin">@product.OriginCountry</p>
+                    <p class="product-description">@product.Description</p>
+
+                    <div class="product-footer">
+                        <span class="product-price">€@product.Price.ToString("F2")</span>
+                        @if (product.Caffeine != TeaShop.Models.CaffeineType.NotApplicable)
+                        {
+                            <span class="product-caffeine @(product.Caffeine == TeaShop.Models.CaffeineType.CaffeineFree ? "caffeine-free" : "caffeinated")">
+                                @(product.Caffeine == TeaShop.Models.CaffeineType.CaffeineFree ? "Caffeine Free" : "Caffeinated")
+                            </span>
+                        }
+                    </div>
+
+                    @* Add to cart button. *@
+                    <p class="product-stock" style="font-size: 0.8rem; margin-top: 0.5rem; color: @(product.Stock > 0 ? "#5c6b4f" : "#7c6b6b");">
+                        @(product.Stock > 0 ? $"{product.Stock} in stock" : "Out of stock")
+                    </p>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <button class="btn btn-add-cart" disabled style="opacity: 0.4; cursor: not-allowed;">Add to Cart</button>
+                    }
+                    else if (product.Stock <= 0)
+                    {
+                        <button class="btn btn-add-cart" disabled style="opacity: 0.4; cursor: not-allowed;">Out of Stock</button>
+                    }
+                    else
+                    {
+                        <button class="btn btn-add-cart" data-product-id="@product.Id">Add to Cart</button>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Products.Any())
+    {
+        <div class="no-results">
+            <p>No teas match your filters. Try different criteria.</p>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+    (function() {
+        var categorySelect = document.getElementById('categoryId');
+        var caffeineSelect = document.getElementById('caffeine');
+        // Find the "Teas" category ID from the dropdown options.
+        var teasOption = Array.from(categorySelect.options).find(o => o.text === 'Teas');
+        var teasId = teasOption ? teasOption.value : '';
+
+        function toggleCaffeine() {
+            var selected = categorySelect.value;
+            // Enable caffeine filter only when "All Categories" or "Teas" is selected.
+            var enabled = selected === '' || selected === teasId;
+            caffeineSelect.disabled = !enabled;
+            if (!enabled) {
+                caffeineSelect.value = '';
+            }
+        }
+
+        categorySelect.addEventListener('change', toggleCaffeine);
+        toggleCaffeine(); // Run on page load too (in case a non-tea category is pre-selected).
+    })();
+</script>
+}
+
+

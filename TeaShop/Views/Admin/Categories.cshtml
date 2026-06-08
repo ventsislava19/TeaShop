@@ -1,0 +1,55 @@
+@model List<TeaShop.Models.Category>
+
+@{
+    ViewData["Title"] = "Manage Categories";
+}
+
+<div class="account-page">
+    <div class="admin-header">
+        <h2>Manage Categories</h2>
+        <a asp-action="CreateCategory" class="btn btn-primary">Add Category</a>
+    </div>
+
+    <div class="account-section">
+        <table class="cart-table">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Products</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td><strong>@c.Name</strong></td>
+                    <td>@(c.Description ?? "-")</td>
+                    <td>@c.Products.Count</td>
+                    <td>
+                        <div class="actions-cell">
+                            <a asp-action="EditCategory" asp-route-id="@c.Id"
+                               class="btn btn-secondary btn-sm">
+                                Edit
+                            </a>
+                            <form asp-action="DeleteCategory" asp-route-id="@c.Id" method="post"
+                                  onsubmit="return confirm('Delete this category?');">
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    Delete
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="back-link">
+        <a asp-action="Index">Back to Admin Panel</a>
+    </div>
+</div>
+
+

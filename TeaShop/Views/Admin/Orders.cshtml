@@ -1,0 +1,74 @@
+@model List<TeaShop.Models.Order>
+
+@{
+    ViewData["Title"] = "Manage Orders";
+}
+
+<div class="account-page">
+    <h2>Manage Orders</h2>
+
+    @if (Model.Any())
+    {
+        @foreach (var order in Model)
+        {
+            <div class="account-section">
+                <div class="order-card">
+                    <div class="order-header">
+                        <strong>Order #@order.Id - @order.User?.Name (@order.User?.Email)</strong>
+                        <span class="order-status status-@order.Status.ToString().ToLower()">
+                            @order.Status
+                        </span>
+                    </div>
+                    <p class="order-date">
+                        Placed @order.CreatedAt.ToString("dd MMM yyyy, HH:mm")
+                    </p>
+
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <p class="order-item-line">
+                            @item.Product?.Name × @item.Quantity
+                            - €@((item.Price * item.Quantity).ToString("F2"))
+                        </p>
+                    }
+
+                    <p class="order-total"><strong>Total: €@order.Total.ToString("F2")</strong></p>
+
+                    @if (!string.IsNullOrEmpty(order.ShippingAddress))
+                    {
+                        <p class="order-shipping">
+                            Ships to: @order.ShippingAddress, @order.ShippingCity @order.ShippingPostalCode
+                        </p>
+                    }
+
+                    <form asp-action="UpdateOrderStatus" method="post" class="status-form">
+                        <input type="hidden" name="orderId" value="@order.Id"/>
+                        <select name="status" class="admin-status-select">
+                            @foreach (var status in Enum.GetValues<TeaShop.Models.OrderStatus>())
+                            {
+                                <option value="@status" selected="@(order.Status == status ? "selected" : null)">
+                                    @status
+                                </option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-secondary btn-sm">
+                            Update Status
+                        </button>
+                    </form>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="account-section">
+            <p class="empty-message">No orders yet.</p>
+        </div>
+    }
+
+    <div class="back-link">
+        <a asp-action="Index">Back to Admin Panel</a>
+    </div>
+</div>
+
+
+

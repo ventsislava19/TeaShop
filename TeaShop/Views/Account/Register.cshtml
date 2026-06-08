@@ -1,0 +1,47 @@
+@model TeaShop.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <h2>Create Account</h2>
+
+        @* Validation summary shows errors like "Email already taken" *@
+        <div asp-validation-summary="All"></div>
+
+        <form asp-action="Register" method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" placeholder="Your full name"/>
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email" placeholder="your@email.com"/>
+                <span asp-validation-for="Email"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" placeholder="At least 6 characters"/>
+                <span asp-validation-for="Password"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ConfirmPassword"></label>
+                <input asp-for="ConfirmPassword" type="password" placeholder="Repeat password"/>
+                <span asp-validation-for="ConfirmPassword"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit">Register</button>
+        </form>
+
+        <p class="auth-link">
+            Already have an account? <a asp-action="Login">Login here!</a>
+        </p>
+    </div>
+</div>
+

@@ -1,0 +1,158 @@
+﻿@* This is the Razor layout - like in PHP header.php + footer.php combined.
+   Every page is rendered inside @RenderBody(). The @-sign lets us write C# in HTML. *@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>@ViewData["Title"] - Tea Shop</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Bellefair&family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body>
+
+<header class="primary-header">
+    <div class="nav-container">
+        <a href="/" class="nav-logo">
+            <img src="~/images/tea_bag.png" alt="Tea Shop" class="nav-logo-img"/>
+        </a>
+
+        <div class="nav-line"></div>
+
+        <nav class="nav-links">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+
+            @{
+                var cartJson = Context.Session.GetString("Cart");
+                var cartCount = 0;
+                if (cartJson != null)
+                {
+                    var cartItems = System.Text.Json.JsonSerializer.Deserialize<List<TeaShop.Models.CartItem>>(cartJson);
+                    cartCount = cartItems?.Sum(i => i.Quantity) ?? 0;
+                }
+            }
+            
+            @if (!User.IsInRole("Admin"))
+            {
+                <a asp-controller="Cart" asp-action="Index" id="cart-nav-link">
+                    Cart (@cartCount)
+                </a>
+            }
+
+            @if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("Admin"))
+                {
+                    <a asp-controller="Admin" asp-action="Index">Admin</a>
+                }
+                <a asp-controller="Account" asp-action="Index">My Account</a>
+                <form asp-controller="Account" asp-action="Logout" method="post" class="nav-logout-form">
+                    <button type="submit" class="nav-link-button">Logout</button>
+                </form>
+            }
+            else
+            {
+                <a asp-controller="Account" asp-action="Login">Account</a>
+            }
+        </nav>
+    </div>
+</header>
+
+<main class="main-content">
+    @Html.AntiForgeryToken()
+    @RenderBody()
+</main>
+
+<footer class="site-footer">
+    <p class="footer-heading">Useful Links</p>
+    <div class="footer-links">
+        <a asp-controller="Home" asp-action="Index">Home</a>
+        <a asp-controller="Account" asp-action="Index">Account</a>
+        @if (!User.IsInRole("Admin"))
+        {
+            <a asp-controller="Cart" asp-action="Index">Cart</a>
+        }
+    </div>
+    <p class="footer-copy">@DateTime.Now.Year Tea Shop - CSCB766 ASP.NET Project</p>
+</footer>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('input[type="password"]').forEach(function(input) {
+            var wrapper = document.createElement('div');
+            wrapper.className = 'password-wrapper';
+            input.parentNode.insertBefore(wrapper, input);
+            wrapper.appendChild(input);
+
+            var toggle = document.createElement('button');
+            toggle.type = 'button';
+            toggle.className = 'password-toggle';
+            toggle.textContent = 'Show';
+            wrapper.appendChild(toggle);
+
+            toggle.addEventListener('click', function() {
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    toggle.textContent = 'Hide';
+                } else {
+                    input.type = 'password';
+                    toggle.textContent = 'Show';
+                }
+            });
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('click', function(e) {
+        if (!e.target.matches('.btn-add-cart')) return;
+
+        var button = e.target;
+        var productId = button.getAttribute('data-product-id');
+        var token = document.querySelector('input[name="__RequestVerificationToken"]')?.value;
+
+        // Get or create the antiforgery token.
+        var tokenInput = document.querySelector('input[name="__RequestVerificationToken"]');
+        if (!tokenInput) return;
+
+        button.textContent = 'Added!';
+        button.disabled = true;
+
+        fetch('/Cart/Add', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            body: 'productId=' + productId + '&__RequestVerificationToken=' + encodeURIComponent(tokenInput.value)
+        })
+        .then(r => r.json())
+        .then(data => {
+            // Update cart count in navbar.
+            var cartLink = document.getElementById('cart-nav-link');
+            if (cartLink) {
+                cartLink.textContent = 'Cart (' + data.cartCount + ')';
+            }
+
+            // Reset button after a moment.
+            setTimeout(function() {
+                button.textContent = 'Add to Cart';
+                button.disabled = false;
+            }, 1000);
+        })
+        .catch(function() {
+            button.textContent = 'Add to Cart';
+            button.disabled = false;
+        });
+    });
+</script>
+</body>
+</html>
+
+
+
+

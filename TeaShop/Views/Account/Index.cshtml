@@ -1,0 +1,54 @@
+@model TeaShop.Models.ApplicationUser
+
+@{
+    ViewData["Title"] = "My Account";
+}
+
+<div class="account-page">
+    <h2>My Account</h2>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="success-message">
+            @TempData["SuccessMessage"]
+        </div>
+    }
+
+    <div class="account-section">
+        <h3>Profile</h3>
+        <p><strong>Name:</strong> @Model.Name</p>
+        <p><strong>Email:</strong> @Model.Email</p>
+
+        @if (!User.IsInRole("Admin"))
+        {
+            <div class="profile-actions">
+                <a asp-action="EditProfile" class="btn btn-secondary">Edit Profile</a>
+                <a asp-action="ChangePassword" class="btn btn-secondary">Change Password</a>
+            </div>
+        }
+    </div>
+
+    @if (!User.IsInRole("Admin"))
+    {
+        <div class="account-section">
+            <h3>Orders</h3>
+            <a asp-controller="Order" asp-action="History" class="btn btn-primary">
+                View Order History
+            </a>
+        </div>
+
+        <div class="account-section">
+            <h3>Delete Account</h3>
+            <p class="delete-section-text">
+                This action is permanent and cannot be undone. All your data will be removed.
+            </p>
+            <form asp-action="DeleteAccount" method="post"
+                  onsubmit="return confirm('Are you sure you want to delete your account? This cannot be undone.');">
+                <button type="submit" class="btn btn-danger">Delete My Account</button>
+            </form>
+        </div>
+    }
+</div>
+
+
+

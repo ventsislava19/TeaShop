@@ -1,0 +1,68 @@
+@model List<TeaShop.Models.Order>
+
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<div class="account-page">
+    <h2>Order History</h2>
+
+    @await Html.PartialAsync("_OrderSupportNotice")
+
+    @if (Model.Any())
+    {
+        @foreach (var order in Model)
+        {
+            <div class="account-section">
+                <div class="order-card">
+                    <div class="order-header">
+                        <strong>Order #@order.Id</strong>
+                        <span class="order-status status-@order.Status.ToString().ToLower()">
+                            @order.Status
+                        </span>
+                    </div>
+                    <p class="order-date">
+                        Placed on @order.CreatedAt.ToString("dd MMMM yyyy, HH:mm")
+                    </p>
+
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <p class="order-item-line">
+                            @item.Product?.Name × @item.Quantity
+                            - €@((item.Price * item.Quantity).ToString("F2"))
+                        </p>
+                    }
+
+                    <p class="order-total">
+                        <strong>Total: €@(order.Total.ToString("F2"))</strong>
+                    </p>
+
+                    @if (!string.IsNullOrEmpty(order.ShippingAddress))
+                    {
+                        <p class="order-shipping">
+                            Ships to: @order.ShippingAddress, @order.ShippingCity @order.ShippingPostalCode
+                        </p>
+                    }
+
+                    @if (order.Status == TeaShop.Models.OrderStatus.AwaitingPayment)
+                    {
+                        <form asp-action="PayNow" asp-route-id="@order.Id" method="post" class="pay-now-form">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Pay Now
+                            </button>
+                        </form>
+                    }
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="account-section">
+            <p class="empty-message">You haven't placed any orders with us yet.</p>
+            <p class="empty-message"><a asp-controller="Home" asp-action="Index">Browse our teas...</a></p>
+        </div>
+    }
+</div>
+
+

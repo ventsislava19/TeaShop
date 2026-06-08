@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<div class="account-page">
+    <h2>Admin Panel</h2>
+
+    <div class="admin-dashboard-grid">
+        <a asp-action="Products" class="account-section admin-dashboard-card">
+            <h3>Products</h3>
+            <p class="admin-dashboard-count">@ViewBag.ProductCount</p>
+            <p class="admin-dashboard-desc">Manage tea products</p>
+        </a>
+
+        <a asp-action="Orders" class="account-section admin-dashboard-card">
+            <h3>Orders</h3>
+            <p class="admin-dashboard-count">@ViewBag.OrderCount</p>
+            <p class="admin-dashboard-desc">Manage order statuses</p>
+        </a>
+
+        <a asp-action="Categories" class="account-section admin-dashboard-card">
+            <h3>Categories</h3>
+            <p class="admin-dashboard-count">@ViewBag.CategoryCount</p>
+            <p class="admin-dashboard-desc">Manage categories</p>
+        </a>
+    </div>
+</div>
+
+
+

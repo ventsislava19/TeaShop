@@ -1,0 +1,34 @@
+@model TeaShop.ViewModels.EditProfileViewModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <h2>Edit Profile</h2>
+
+        <div asp-validation-summary="All"></div>
+
+        <form asp-action="EditProfile" method="post">
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name"/>
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" type="email"/>
+                <span asp-validation-for="Email"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit">Save Changes</button>
+        </form>
+
+        <p class="auth-link">
+            <a asp-action="Index">Back to Account</a>
+        </p>
+    </div>
+</div>
+

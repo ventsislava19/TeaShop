@@ -1,0 +1,36 @@
+@model TeaShop.Models.Category
+
+@{
+    ViewData["Title"] = "Edit Category";
+}
+
+<div class="auth-page">
+    <div class="auth-card">
+        <h2>Edit Category</h2>
+
+        <div asp-validation-summary="All"></div>
+
+        <form asp-action="EditCategory" method="post">
+            <input type="hidden" asp-for="Id"/>
+
+            <div class="form-group">
+                <label asp-for="Name"></label>
+                <input asp-for="Name"/>
+                <span asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description"></label>
+                <textarea asp-for="Description" rows="3" class="form-textarea"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary auth-submit">Save Changes</button>
+        </form>
+
+        <div class="back-link">
+            <a asp-action="Categories">Back to Categories</a>
+        </div>
+    </div>
+</div>
+
+

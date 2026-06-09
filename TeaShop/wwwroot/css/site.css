@@ -150,7 +150,7 @@ a {
 .filters-row {
     display: flex;
     gap: 1.25rem;
-    align-items: flex-end;
+    align-items: center;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -784,6 +784,10 @@ select:focus {
     .filter-group input,
     .filter-group select {
         min-width: 100%;
+    }
+
+    .filter-buttons {
+        align-self: center;
     }
 
     .product-grid {

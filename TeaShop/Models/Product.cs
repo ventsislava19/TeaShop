@@ -21,7 +21,7 @@ public class Product
     [StringLength(255)]
     public string? Image { get; set; }
     
-    // Foreign ket to Category (nullable).
+    // Foreign key to Category (nullable).
     public int CategoryId { get; set; }
     
     // Nav property - EF automatically joins to categories using CategoryId.

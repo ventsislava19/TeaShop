@@ -87,7 +87,7 @@ public class AccountController : Controller
         if (!ModelState.IsValid)
             return View(model);
 
-        // PasswordSignInAsync finds the user, verifies the password hash, and creates the cookie.
+        // PasswordSignInAsync finds the user, verifies the password hash,creates the cookie.
         var result = await _signInManager.PasswordSignInAsync(
             model.Email,
             model.Password,

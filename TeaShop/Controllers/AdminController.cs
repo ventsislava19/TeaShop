@@ -85,7 +85,7 @@ public class AdminController : Controller
         return RedirectToAction("Products");
     }
 
-    // GET: /Admin/EditProduct/5
+    // GET: /Admin/EditProduct/productID
     public IActionResult EditProduct(int id)
     {
         var product = _context.Products.Find(id);
@@ -108,7 +108,7 @@ public class AdminController : Controller
         return View(model);
     }
 
-    // POST: /Admin/EditProduct/5
+    // POST: /Admin/EditProduct/productID
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult EditProduct(ProductFormViewModel model)
@@ -135,7 +135,7 @@ public class AdminController : Controller
         return RedirectToAction("Products");
     }
 
-    // POST: /Admin/DeleteProduct/5
+    // POST: /Admin/DeleteProduct/productID
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult DeleteProduct(int id)
@@ -209,7 +209,7 @@ public class AdminController : Controller
         return RedirectToAction("Categories");
     }
 
-    // GET: /Admin/EditCategory/1
+    // GET: /Admin/EditCategory/categoryID
     public IActionResult EditCategory(int id)
     {
         var category = _context.Categories.Find(id);
@@ -217,7 +217,7 @@ public class AdminController : Controller
         return View(category);
     }
 
-    // POST: /Admin/EditCategory/1
+    // POST: /Admin/EditCategory/categoryID
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult EditCategory(Category category)
@@ -234,7 +234,7 @@ public class AdminController : Controller
         return RedirectToAction("Categories");
     }
 
-    // POST: /Admin/DeleteCategory/1
+    // POST: /Admin/DeleteCategory/categoryID
     [HttpPost]
     [ValidateAntiForgeryToken]
     public IActionResult DeleteCategory(int id)

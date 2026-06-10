@@ -118,7 +118,7 @@ public class OrderController : Controller
         return RedirectToAction("Confirmation", new { id = order.Id });
     }
 
-    // POST: /Order/PayNow/5
+    // POST: /Order/PayNow/orderID
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> PayNow(int id)
@@ -140,7 +140,7 @@ public class OrderController : Controller
         return RedirectToAction("History");
     }
 
-    // GET: /Order/Confirmation/5
+    // GET: /Order/Confirmation/orderID
     // Shows "thank you" page after placing an order.
     public async Task<IActionResult> Confirmation(int id)
     {

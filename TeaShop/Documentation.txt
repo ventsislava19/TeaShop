@@ -1,56 +1,56 @@
 ================================================================================
-                        SOFTWARE DOCUMENTATION
+                             SOFTWARE DOCUMENTATION
 ================================================================================
-          TEA SHOP - WEB APPLICATION FOR ONLINE TEA SALES
-================================================================================
-
-  Course:        CSCB766 Programming with ASP.NET
-  Author:        Ventsislava Petrova
-  Date:          June 2026
-  Version:       1.0
-  Repository:    https://github.com/ventsislava19/TeaShop
-  Documentation: NASA Software Documentation Standard
-
-================================================================================
-                        TABLE OF CONTENTS
+                 TEA SHOP - WEB APPLICATION FOR ONLINE TEA SALES
 ================================================================================
 
-  1. INTRODUCTION
-     1.1 Purpose
-     1.2 Scope
-     1.3 Definitions and Acronyms
-     1.4 References
-
-  2. PROJECT DESCRIPTION
-     2.1 System Overview
-     2.2 Implemented Functionality
-     2.3 Architecture
-     2.4 Technologies Used
-
-  3. DATABASE DESCRIPTION
-     3.1 Database Engine
-     3.2 Entity-Relationship Overview
-     3.3 Table Descriptions
-     3.4 Seed Data
-
-  4. USER GUIDE
-     4.1 Prerequisites and Setup
-     4.2 Starting the Application
-     4.3 Public Features (Guest User)
-     4.4 Registered User Features
-     4.5 Administrator Features
-
-  5. EXTERNAL COMPONENTS
-     5.1 NuGet Packages
-     5.2 Google Fonts
-     5.3 Docker / Azure SQL Edge
-
-  6. FILE STRUCTURE
-
-  7. ADMIN CREDENTIALS
+    Course:        CSCB766 Programming with ASP.NET
+    Author:        Ventsislava Petrova
+    Date:          June 2026
+    Version:       1.0
+    Repository:    https://github.com/ventsislava19/TeaShop
+    Documentation: NASA Software Documentation Standard
 
 ================================================================================
-  1. INTRODUCTION
+                             TABLE OF CONTENTS
+================================================================================
+
+    1. INTRODUCTION
+       1.1 Purpose
+       1.2 Scope
+       1.3 Definitions and Acronyms
+       1.4 References
+
+    2. PROJECT DESCRIPTION
+       2.1 System Overview
+       2.2 Implemented Functionality
+       2.3 Architecture
+       2.4 Technologies Used
+
+    3. DATABASE DESCRIPTION
+       3.1 Database Engine
+       3.2 Entity-Relationship Overview
+       3.3 Table Descriptions
+       3.4 Seed Data
+
+    4. USER GUIDE
+       4.1 Prerequisites and Setup
+       4.2 Starting the Application
+       4.3 Public Features (Guest User)
+       4.4 Registered User Features
+       4.5 Administrator Features
+
+    5. EXTERNAL COMPONENTS
+       5.1 NuGet Packages
+       5.2 Google Fonts
+       5.3 Docker / Azure SQL Edge
+
+    6. FILE STRUCTURE
+
+    7. ADMIN CREDENTIALS
+
+================================================================================
+    1. INTRODUCTION
 ================================================================================
 
 1.1 PURPOSE
@@ -71,28 +71,28 @@ administrative panel for managing products, categories and orders.
 
 1.3 DEFINITIONS AND ACRONYMS
 -----------------------------
-  ASP.NET     - A web framework by Microsoft for building web applications
-  MVC         - Model-View-Controller architectural pattern
-  EF Core     - Entity Framework Core, an Object-Relational Mapper (ORM)
-  LINQ        - Language Integrated Query
-  Razor       - A templating engine that mixes C# with HTML
-  CRUD        - Create, Read, Update, Delete operations
-  AJAX        - Asynchronous JavaScript and XML
-  CSRF        - Cross-Site Request Forgery
-  ORM         - Object-Relational Mapping
-  DI          - Dependency Injection
-  DTO         - Data Transfer Object
-  HSL         - Hue, Saturation, Lightness (color model)
+    ASP.NET     - A web framework by Microsoft for building web applications
+    MVC         - Model-View-Controller architectural pattern
+    EF Core     - Entity Framework Core, an Object-Relational Mapper (ORM)
+    LINQ        - Language Integrated Query
+    Razor       - A templating engine that mixes C# with HTML
+    CRUD        - Create, Read, Update, Delete operations
+    AJAX        - Asynchronous JavaScript and XML
+    CSRF        - Cross-Site Request Forgery
+    ORM         - Object-Relational Mapping
+    DI          - Dependency Injection
+    DTO         - Data Transfer Object
+    HSL         - Hue, Saturation, Lightness (color model)
 
 1.4 REFERENCES
 --------------
-  - Microsoft ASP.NET Core MVC Documentation
-  - Entity Framework Core Documentation
-  - ASP.NET Core Identity Documentation
-  - Course lecture slides (CSCB766)
+    - Microsoft ASP.NET Core MVC Documentation
+    - Entity Framework Core Documentation
+    - ASP.NET Core Identity Documentation
+    - Course lecture slides (CSCB766)
 
 ================================================================================
-  2. PROJECT DESCRIPTION
+    2. PROJECT DESCRIPTION
 ================================================================================
 
 2.1 SYSTEM OVERVIEW
@@ -107,152 +107,152 @@ authorization and Razor views for the presentation layer.
 ------------------------------
 The following features have been implemented:
 
-  PUBLIC FEATURES (Guest Users):
-  - Browse the full product catalog with 33 seeded tea products
-  - Filter products by origin country, category and caffeine type
-  - Search products by name and description
-  - Add products to a session-based shopping cart (no login required)
-  - View and modify cart contents (update quantity, remove items)
-  - View product stock availability
+    PUBLIC FEATURES (Guest Users):
+    - Browse the full product catalog with 33 seeded tea products
+    - Filter products by origin country, category and caffeine type
+    - Search products by name and description
+    - Add products to a session-based shopping cart (no login required)
+    - View and modify cart contents (update quantity, remove items)
+    - View product stock availability
 
-  REGISTERED USER FEATURES:
-  - User registration with name, email and password
-  - User login and logout with secure cookie-based authentication
-  - Password visibility toggle on all password fields
-  - Place orders with shipping address (street, city, postal code)
-  - Choose between Pay Now and Pay Later at checkout
-  - View order history with order details and status
-  - Pay for previously unpaid orders from order history
-  - Edit profile (name, email)
-  - Change password
-  - Delete account
+    REGISTERED USER FEATURES:
+    - User registration with name, email and password
+    - User login and logout with secure cookie-based authentication
+    - Password visibility toggle on all password fields
+    - Place orders with shipping address (street, city, postal code)
+    - Choose between Pay Now and Pay Later at checkout
+    - View order history with order details and status
+    - Pay for previously unpaid orders from order history
+    - Edit profile (name, email)
+    - Change password
+    - Delete account
 
-  ADMINISTRATOR FEATURES:
-  - Admin dashboard with product, order and category counts
-  - Full CRUD operations for products (add, edit, delete)
-  - Full CRUD operations for categories (add, edit, delete)
-  - View all customer orders with details
-  - Update order statuses (AwaitingPayment, Paid, Processing, Shipped,
-    Completed, Cancelled)
-  - Admin account is seeded automatically on first run
+    ADMINISTRATOR FEATURES:
+    - Admin dashboard with product, order and category counts
+    - Full CRUD operations for products (add, edit, delete)
+    - Full CRUD operations for categories (add, edit, delete)
+    - View all customer orders with details
+    - Update order statuses (AwaitingPayment, Paid, Processing, Shipped,
+      Completed, Cancelled)
+    - Admin account is seeded automatically on first run
 
-  CART AND CHECKOUT:
-  - Session-based cart persists across pages without requiring login
-  - AJAX add-to-cart (page does not reload, button shows "Added" confirmation)
-  - Live cart counter in the navigation bar
-  - Cart quantity updates auto-submit on change
-  - Stock validation prevents adding out-of-stock items
-  - Stock decreases automatically when orders are placed
-  - Order confirmation page with full order summary
-  - Support contact notice on order confirmation and history pages
+    CART AND CHECKOUT:
+    - Session-based cart persists across pages without requiring login
+    - AJAX add-to-cart (page does not reload, button shows "Added" confirmation)
+    - Live cart counter in the navigation bar
+    - Cart quantity updates auto-submit on change
+    - Stock validation prevents adding out-of-stock items
+    - Stock decreases automatically when orders are placed
+    - Order confirmation page with full order summary
+    - Support contact notice on order confirmation and history pages
 
-  SECURITY FEATURES:
-  - ASP.NET Identity for password hashing and session management
-  - Anti-forgery tokens (CSRF protection) on all POST forms
-  - Role-based authorization ([Authorize] and [Authorize(Roles = "Admin")])
-  - Admin-only sections hidden from regular users in the UI
-  - Cart and "Add to Cart" buttons hidden/disabled for admin users
+    SECURITY FEATURES:
+    - ASP.NET Identity for password hashing and session management
+    - Anti-forgery tokens (CSRF protection) on all POST forms
+    - Role-based authorization ([Authorize] and [Authorize(Roles = "Admin")])
+    - Admin-only sections hidden from regular users in the UI
+    - Cart and "Add to Cart" buttons hidden/disabled for admin users
 
 2.3 ARCHITECTURE
 ----------------
 The application follows the MVC (Model-View-Controller) pattern:
 
-  MODELS (TeaShop/Models/):
-    Define the data structures and map to database tables.
-    - ApplicationUser.cs   : Extends IdentityUser with a Name field
-    - Product.cs           : Tea product with name, price, origin, caffeine,
-                             stock, image and category reference
-    - Category.cs          : Product category (Teas)
-    - Order.cs             : Customer order with status, total, shipping info
-    - OrderItem.cs         : Individual items within an order
-    - CartItem.cs          : Session-based cart item (not a database entity)
-    - Enums.cs             : CaffeineType and OrderStatus enumerations
+    MODELS (TeaShop/Models/):
+      Define the data structures and map to database tables.
+      - ApplicationUser.cs   : Extends IdentityUser with a Name field
+      - Product.cs           : Tea product with name, price, origin, caffeine,
+                               stock, image and category reference
+      - Category.cs          : Product category (Teas)
+      - Order.cs             : Customer order with status, total, shipping info
+      - OrderItem.cs         : Individual items within an order
+      - CartItem.cs          : Session-based cart item (not a database entity)
+      - Enums.cs             : CaffeineType and OrderStatus enumerations
 
-  VIEWMODELS (TeaShop/ViewModels/):
-    Shape data specifically for view consumption.
-    - ProductCatalogViewModel.cs  : Products + filter options for the catalog
-    - ProductFormViewModel.cs     : Admin product create/edit form
-    - LoginViewModel.cs           : Login form fields
-    - RegisterViewModel.cs        : Registration form fields
-    - EditProfileViewModel.cs     : Profile editing form
-    - ChangePasswordViewModel.cs  : Password change form
-    - CheckoutViewModel.cs        : Checkout form with shipping + cart summary
+    VIEWMODELS (TeaShop/ViewModels/):
+      Shape data specifically for view consumption.
+      - ProductCatalogViewModel.cs  : Products + filter options for the catalog
+      - ProductFormViewModel.cs     : Admin product create/edit form
+      - LoginViewModel.cs           : Login form fields
+      - RegisterViewModel.cs        : Registration form fields
+      - EditProfileViewModel.cs     : Profile editing form
+      - ChangePasswordViewModel.cs  : Password change form
+      - CheckoutViewModel.cs        : Checkout form with shipping + cart summary
 
-  CONTROLLERS (TeaShop/Controllers/):
-    Handle HTTP requests and coordinate between models and views.
-    - HomeController.cs    : Product catalog with filtering and search
-    - AccountController.cs : Registration, login, logout, profile management
-    - CartController.cs    : Add, update, remove cart items (session-based)
-    - OrderController.cs   : Checkout, order confirmation, order history
-    - AdminController.cs   : Product CRUD, category CRUD, order management
+    CONTROLLERS (TeaShop/Controllers/):
+      Handle HTTP requests and coordinate between models and views.
+      - HomeController.cs    : Product catalog with filtering and search
+      - AccountController.cs : Registration, login, logout, profile management
+      - CartController.cs    : Add, update, remove cart items (session-based)
+      - OrderController.cs   : Checkout, order confirmation, order history
+      - AdminController.cs   : Product CRUD, category CRUD, order management
 
-  VIEWS (TeaShop/Views/):
-    Razor (.cshtml) templates that render HTML with embedded C#.
-    - Views/Home/          : Product catalog page
-    - Views/Account/       : Login, register, profile, edit, change password
-    - Views/Cart/          : Shopping cart page
-    - Views/Order/         : Checkout, confirmation, order history
-    - Views/Admin/         : Dashboard, product/category/order management
-    - Views/Shared/        : Layout, order support notice partial
+    VIEWS (TeaShop/Views/):
+      Razor (.cshtml) templates that render HTML with embedded C#.
+      - Views/Home/          : Product catalog page
+      - Views/Account/       : Login, register, profile, edit, change password
+      - Views/Cart/          : Shopping cart page
+      - Views/Order/         : Checkout, confirmation, order history
+      - Views/Admin/         : Dashboard, product/category/order management
+      - Views/Shared/        : Layout, order support notice partial
 
-  DATA (TeaShop/Data/):
-    - TeaShopContext.cs    : EF Core DbContext with entity configurations
-    - SeedData.cs          : Seeds admin account + 33 tea products on first run
+    DATA (TeaShop/Data/):
+      - TeaShopContext.cs    : EF Core DbContext with entity configurations
+      - SeedData.cs          : Seeds admin account + 33 tea products on first run
 
-  HELPERS (TeaShop/Helpers/):
-    - SessionExtensions.cs : JSON serialization helpers for session storage
+    HELPERS (TeaShop/Helpers/):
+      - SessionExtensions.cs : JSON serialization helpers for session storage
 
 2.4 TECHNOLOGIES USED
 ---------------------
-  Language:          C#
-  Framework:         ASP.NET Core MVC (.NET 9)
-  ORM:               Entity Framework Core 9
-  Authentication:    ASP.NET Core Identity
-  Database:          Microsoft SQL Server (Azure SQL Edge via Docker)
-  View Engine:       Razor
-  Frontend:          HTML, CSS (custom properties), JavaScript (vanilla)
-  Fonts:             Google Fonts (Bellefair, Barlow, Barlow Condensed)
-  IDE:               JetBrains Rider
-  Version Control:   Git + GitHub
-  Containerization:  Docker (for SQL Server on macOS)
+    Language:          C#
+    Framework:         ASP.NET Core MVC (.NET 9)
+    ORM:               Entity Framework Core 9
+    Authentication:    ASP.NET Core Identity
+    Database:          Microsoft SQL Server (Azure SQL Edge via Docker)
+    View Engine:       Razor
+    Frontend:          HTML, CSS (custom properties), JavaScript (vanilla)
+    Fonts:             Google Fonts (Bellefair, Barlow, Barlow Condensed)
+    IDE:               JetBrains Rider
+    Version Control:   Git + GitHub
+    Containerization:  Docker (for SQL Server on macOS)
 
 ================================================================================
-  3. DATABASE DESCRIPTION
+    3. DATABASE DESCRIPTION
 ================================================================================
 
 3.1 DATABASE ENGINE
 -------------------
 The project uses Microsoft SQL Server, specifically the Azure SQL Edge image
 running in a Docker container. This was chosen because:
-  - The course requires MS SQL Server or LocalDB
-  - Azure SQL Edge is compatible with Apple Silicon (M-series) Macs
-  - It runs as a lightweight Docker container
+    - The course requires MS SQL Server or LocalDB
+    - Azure SQL Edge is compatible with Apple Silicon (M-series) Macs
+    - It runs as a lightweight Docker container
 
 Connection is configured in appsettings.json:
-  Server=localhost,1433;Database=TeaShopDb;User Id=sa;
-  Password=TeaShop123!;TrustServerCertificate=True
+    Server=localhost,1433;Database=TeaShopDb;User Id=sa;
+    Password=TeaShop123!;TrustServerCertificate=True
 
 3.2 ENTITY-RELATIONSHIP OVERVIEW
 ---------------------------------
 The database contains the following entity relationships:
 
-  Category (1) -> (Many) Product
-    A category can have many products. If a category is deleted, its products'
-    CategoryId is set to NULL (ON DELETE SET NULL).
+    Category (1) -> (Many) Product
+      A category can have many products. If a category is deleted, its products'
+      CategoryId is set to NULL (ON DELETE SET NULL).
 
-  ApplicationUser (1) -> (Many) Order
-    A user can have many orders.
+    ApplicationUser (1) -> (Many) Order
+      A user can have many orders.
 
-  Order (1) -> (Many) OrderItem
-    An order contains many order items. If an order is deleted, its items are
-    cascade deleted (ON DELETE CASCADE).
+    Order (1) -> (Many) OrderItem
+      An order contains many order items. If an order is deleted, its items are
+      cascade deleted (ON DELETE CASCADE).
 
-  Product (1) -> (Many) OrderItem
-    A product can appear in many order items across different orders.
+    Product (1) -> (Many) OrderItem
+      A product can appear in many order items across different orders.
 
-  In addition, ASP.NET Identity creates its own tables:
-    AspNetUsers, AspNetRoles, AspNetUserRoles, AspNetUserClaims,
-    AspNetUserLogins, AspNetUserTokens, AspNetRoleClaims
+    In addition, ASP.NET Identity creates its own tables:
+      AspNetUsers, AspNetRoles, AspNetUserRoles, AspNetUserClaims,
+      AspNetUserLogins, AspNetUserTokens, AspNetRoleClaims
 
 3.3 TABLE DESCRIPTIONS
 ----------------------
@@ -320,309 +320,309 @@ TABLE: AspNetUsers (extended by ApplicationUser)
 3.4 SEED DATA
 -------------
 On first application startup, SeedData.cs automatically:
-  1. Creates an "Admin" role
-  2. Creates an admin user (admin@teashop.com / Admin123!)
-  3. Creates a "Teas" category
-  4. Inserts 33 tea products from 6 countries of origin:
-     - China (8 teas): Pai Mu Tan, Souchong, Ming Feng Maocha,
-       Milky Oolong, Anxi Tie Guan Yin, Mao Jian,
-       Ming Feng Gong Ting, Gunpowder
-     - Japan (9 teas): Hojicha, Genmaicha, Kukicha, Sayamakaori,
-       Bancha, Sencha Fukamushi, Sencha Yabukita,
-       Sencha Asamushi, Gyokuro Asahina
-     - India (6 teas): Darjeeling First Flush, Darjeeling Second Flush,
-       Assam Wild Forest, Earl Grey, Assam Tonganagaon,
-       Assam Wild Oolong
-     - Nepal (1 tea): Sakhejung Golden
-     - Taiwan (4 teas): Yuchi Red Jade, Jin Xuan Milky Oolong,
-       Oolong Qing Xin, Gui Fei Oolong
-     - Bulgaria (5 teas): Oregano, La Vie En Rose, Mursal Tea,
-       Linden Blossom, Chamomile
+    1. Creates an "Admin" role
+    2. Creates an admin user (admin@teashop.com / admin@teashop.com)
+    3. Creates a "Teas" category
+    4. Inserts 33 tea products from 6 countries of origin:
+       - China (8 teas): Pai Mu Tan, Souchong, Ming Feng Maocha,
+         Milky Oolong, Anxi Tie Guan Yin, Mao Jian,
+         Ming Feng Gong Ting, Gunpowder
+       - Japan (9 teas): Hojicha, Genmaicha, Kukicha, Sayamakaori,
+         Bancha, Sencha Fukamushi, Sencha Yabukita,
+         Sencha Asamushi, Gyokuro Asahina
+       - India (6 teas): Darjeeling First Flush, Darjeeling Second Flush,
+         Assam Wild Forest, Earl Grey, Assam Tonganagaon,
+         Assam Wild Oolong
+       - Nepal (1 tea): Sakhejung Golden
+       - Taiwan (4 teas): Yuchi Red Jade, Jin Xuan Milky Oolong,
+         Oolong Qing Xin, Gui Fei Oolong
+       - Bulgaria (5 teas): Oregano, La Vie En Rose, Mursal Tea,
+         Linden Blossom, Chamomile
 
-  Each product is seeded with a default stock of 20 units.
+    Each product is seeded with a default stock of 20 units.
 
 ================================================================================
-  4. USER GUIDE
+    4. USER GUIDE
 ================================================================================
 
 4.1 PREREQUISITES AND SETUP
 ----------------------------
 To run this application, the following must be installed:
 
-  1. .NET 9 SDK (or later)
-     Download: https://dotnet.microsoft.com/download
+    1. .NET 9 SDK (or later)
+       Download: https://dotnet.microsoft.com/download
 
-  2. Docker Desktop (for SQL Server on macOS)
-     Download: https://www.docker.com/products/docker-desktop
+    2. Docker Desktop (for SQL Server on macOS)
+       Download: https://www.docker.com/products/docker-desktop
 
-  3. Start SQL Server in Docker:
-     docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=TeaShop123! -p 1433:1433
-       --name sqlserver -d mcr.microsoft.com/azure-sql-edge
+    3. Start SQL Server in Docker:
+       docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=TeaShop123! -p 1433:1433
+         --name sqlserver -d mcr.microsoft.com/azure-sql-edge
 
-  4. Navigate to the project directory:
-     cd TeaShop/TeaShop
+    4. Navigate to the project directory:
+       cd TeaShop/TeaShop
 
-  5. Apply database migrations:
-     dotnet ef database update
+    5. Apply database migrations:
+       dotnet ef database update
 
-  6. Run the application:
-     dotnet run
+    6. Run the application:
+        dotnet run
 
-  The application will be available at: https://localhost:5144
-  (the port may vary; check the terminal output)
+    The application will be available at: https://localhost:5144
+    (the port may vary; check the terminal output)
 
 4.2 STARTING THE APPLICATION
 -----------------------------
-  1. Ensure Docker is running and the SQL Server container is active.
-     To check: docker ps
-     To start if stopped: docker start sqlserver
+    1. Ensure Docker is running and the SQL Server container is active.
+       To check: docker ps
+       To start if stopped: docker start sqlserver
 
-  2. Open a terminal in the TeaShop/TeaShop directory.
+    2. Open a terminal in the TeaShop/TeaShop directory.
 
-  3. Run: dotnet run
+    3. Run: dotnet run
 
-  4. Open a browser and navigate to the URL shown in the terminal.
+    4. Open a browser and navigate to the URL shown in the terminal.
 
-  5. On first run, the database is automatically seeded with:
-     - 33 tea products
-     - 1 admin account (admin@teashop.com / Admin123!)
-     - 1 "Teas" category
+    5. On first run, the database is automatically seeded with:
+       - 33 tea products
+       - 1 admin account (admin@teashop.com / Admin123!)
+       - 1 "Teas" category
 
 4.3 PUBLIC FEATURES (GUEST USER)
 ---------------------------------
 
-  BROWSING THE CATALOG:
-  - The home page displays all tea products in a card grid layout.
-  - Each card shows the product image, name, origin country, description,
-    price, caffeine status and stock availability.
-  - Products with 0 stock show "Out of stock" and the Add to Cart button
-    is disabled.
+    BROWSING THE CATALOG:
+    - The home page displays all tea products in a card grid layout.
+    - Each card shows the product image, name, origin country, description,
+      price, caffeine status and stock availability.
+    - Products with 0 stock show "Out of stock" and the Add to Cart button
+      is disabled.
 
-  FILTERING AND SEARCHING:
-  - Use the filter bar at the top of the catalog page.
-  - SEARCH: Type keywords to search by product name or description.
-  - ORIGIN: Filter by country of origin (China, Japan, India, etc.)
-  - CATEGORY: Filter by product category (Teas or future categories).
-  - CAFFEINE: Filter by caffeine content (Caffeinated or Caffeine Free).
-    This filter is automatically disabled when a non-tea category is
-    selected.
-  - Click "Filter" to apply. Click "Reset Filters" to clear all filters.
+    FILTERING AND SEARCHING:
+    - Use the filter bar at the top of the catalog page.
+    - SEARCH: Type keywords to search by product name or description.
+    - ORIGIN: Filter by country of origin (China, Japan, India, etc.)
+    - CATEGORY: Filter by product category (Teas or future categories).
+    - CAFFEINE: Filter by caffeine content (Caffeinated or Caffeine Free).
+      This filter is automatically disabled when a non-tea category is
+      selected.
+    - Click "Filter" to apply. Click "Reset Filters" to clear all filters.
 
-  SHOPPING CART:
-  - Click "Add to Cart" on any product card. The button briefly shows
-    "Added" and the cart counter in the navigation bar updates without
-    reloading the page (AJAX).
-  - Click "Cart" in the navigation bar to view cart contents.
-  - Change the quantity using the number input (auto-submits on change).
-  - Click "Remove" to remove an item from the cart.
-  - The cart persists in the session; no login is required to use it.
+    SHOPPING CART:
+    - Click "Add to Cart" on any product card. The button briefly shows
+      "Added" and the cart counter in the navigation bar updates without
+      reloading the page (AJAX).
+    - Click "Cart" in the navigation bar to view cart contents.
+    - Change the quantity using the number input (auto-submits on change).
+    - Click "Remove" to remove an item from the cart.
+    - The cart persists in the session; no login is required to use it.
 
-  REGISTRATION:
-  - Click "Account" in the navigation bar, then "Register here".
-  - Fill in: Full Name, Email, Password (min 6 characters), Confirm Password.
-  - On successful registration, you are automatically logged in.
+    REGISTRATION:
+    - Click "Account" in the navigation bar, then "Register here".
+    - Fill in: Full Name, Email, Password (min 6 characters), Confirm Password.
+    - On successful registration, you are automatically logged in.
 
-  LOGIN:
-  - Click "Account" in the navigation bar.
-  - Enter your email and password.
-  - Use the "Show/Hide" toggle to reveal password characters.
+    LOGIN:
+    - Click "Account" in the navigation bar.
+    - Enter your email and password.
+    - Use the "Show/Hide" toggle to reveal password characters.
 
 4.4 REGISTERED USER FEATURES
 ------------------------------
 
-  CHECKOUT:
-  - From the cart page, click "Proceed to Checkout".
-  - Review the order summary (products, quantities, subtotals).
-  - Fill in the shipping address (street, city, postal code).
-  - Select payment method:
-    * Pay Now: Order is placed with status "Paid".
-    * Pay Later: Order is placed with status "AwaitingPayment".
-  - Click "Place Order".
-  - A confirmation page displays the order details and a support
-    contact notice for corrections.
+    CHECKOUT:
+    - From the cart page, click "Proceed to Checkout".
+    - Review the order summary (products, quantities, subtotals).
+    - Fill in the shipping address (street, city, postal code).
+    - Select payment method:
+      * Pay Now: Order is placed with status "Paid".
+      * Pay Later: Order is placed with status "AwaitingPayment".
+    - Click "Place Order".
+    - A confirmation page displays the order details and a support
+      contact notice for corrections.
 
-  ORDER HISTORY:
-  - Navigate to "My Account" then click "View Order History".
-  - All past orders are listed with their status, items, totals,
-    and shipping addresses.
-  - Orders with status "AwaitingPayment" display a "Pay Now" button
-    to complete payment.
-  - A support contact notice is shown for order corrections.
+    ORDER HISTORY:
+    - Navigate to "My Account" then click "View Order History".
+    - All past orders are listed with their status, items, totals,
+      and shipping addresses.
+    - Orders with status "AwaitingPayment" display a "Pay Now" button
+      to complete payment.
+    - A support contact notice is shown for order corrections.
 
-  ACCOUNT MANAGEMENT:
-  - Navigate to "My Account".
-  - "Edit Profile": Change your name and email address.
-  - "Change Password": Enter current password, then new password
-    with confirmation. The Show/Hide toggle is available on all fields.
-  - "Delete My Account": Permanently deletes the account after
-    confirmation. This action cannot be undone.
+    ACCOUNT MANAGEMENT:
+    - Navigate to "My Account".
+    - "Edit Profile": Change your name and email address.
+    - "Change Password": Enter current password, then new password
+      with confirmation. The Show/Hide toggle is available on all fields.
+    - "Delete My Account": Permanently deletes the account after
+      confirmation. This action cannot be undone.
 
 4.5 ADMINISTRATOR FEATURES
 ----------------------------
-  Login with: admin@teashop.com / admin@teashop.com
+    Login with: admin@teashop.com / admin@teashop.com
 
-  ADMIN DASHBOARD:
-  - Accessible via "Admin" in the navigation bar (visible only to admins).
-  - Shows counts for Products, Orders and Categories.
-  - Each card links to the respective management page.
+    ADMIN DASHBOARD:
+    - Accessible via "Admin" in the navigation bar (visible only to admins).
+    - Shows counts for Products, Orders and Categories.
+    - Each card links to the respective management page.
 
-  MANAGE PRODUCTS:
-  - View all products in a table with name, category, origin, price,
-    caffeine type and stock.
-  - "Add Product": Opens a form to create a new product with all fields
-    (name, description, price, image filename, category, origin country,
-    stock quantity, caffeine type). Defaults: Category = Teas,
-    Caffeine = NotApplicable.
-  - "Edit": Opens the same form pre-filled with the product's data.
-  - "Delete": Removes the product after confirmation.
+    MANAGE PRODUCTS:
+    - View all products in a table with name, category, origin, price,
+      caffeine type and stock.
+    - "Add Product": Opens a form to create a new product with all fields
+      (name, description, price, image filename, category, origin country,
+      stock quantity, caffeine type). Defaults: Category = Teas,
+      Caffeine = NotApplicable.
+    - "Edit": Opens the same form pre-filled with the product's data.
+    - "Delete": Removes the product after confirmation.
 
-  MANAGE CATEGORIES:
-  - View all categories with name, description and product count.
-  - "Add Category": Create a new category with name and description.
-  - "Edit": Modify an existing category.
-  - "Delete": Remove a category after confirmation.
+    MANAGE CATEGORIES:
+    - View all categories with name, description and product count.
+    - "Add Category": Create a new category with name and description.
+    - "Edit": Modify an existing category.
+    - "Delete": Remove a category after confirmation.
 
-  MANAGE ORDERS:
-  - View all customer orders with customer name, email, items, totals,
-    shipping addresses and current status.
-  - Use the status dropdown to change an order's status:
-    AwaitingPayment -> Paid -> Processing -> Shipped -> Completed
-    (or Cancelled at any stage).
-  - Click "Update Status" to save the change.
+    MANAGE ORDERS:
+    - View all customer orders with customer name, email, items, totals,
+      shipping addresses and current status.
+    - Use the status dropdown to change an order's status:
+      AwaitingPayment -> Paid -> Processing -> Shipped -> Completed
+      (or Cancelled at any stage).
+    - Click "Update Status" to save the change.
 
   ADMIN RESTRICTIONS:
-  - The admin cannot add items to the cart (button is disabled).
-  - The cart link is hidden from the admin navigation.
-  - The admin cannot edit their own profile or delete their account
-    through the regular account page.
+    - The admin cannot add items to the cart (button is disabled).
+    - The cart link is hidden from the admin navigation.
+    - The admin cannot edit their own profile or delete their account
+      through the regular account page.
 
 ================================================================================
-  5. EXTERNAL COMPONENTS
+    5. EXTERNAL COMPONENTS
 ================================================================================
 
 5.1 NUGET PACKAGES
 -------------------
-  Microsoft.EntityFrameworkCore.SqlServer (v9.0.x)
-    - Entity Framework Core provider for SQL Server.
-    - Enables LINQ queries to be translated to SQL and executed against
-      the database.
+    Microsoft.EntityFrameworkCore.SqlServer (v9.0.x)
+      - Entity Framework Core provider for SQL Server.
+      - Enables LINQ queries to be translated to SQL and executed against
+        the database.
 
-  Microsoft.EntityFrameworkCore.Tools (v9.0.x)
-    - Provides the "dotnet ef" CLI commands for managing migrations
-      and database updates.
+    Microsoft.EntityFrameworkCore.Tools (v9.0.x)
+      - Provides the "dotnet ef" CLI commands for managing migrations
+        and database updates.
 
-  Microsoft.AspNetCore.Identity.EntityFrameworkCore (v9.0.x)
-    - Integrates ASP.NET Core Identity with Entity Framework Core.
-    - Provides user registration, login, password hashing, role management,
-      and cookie-based authentication.
+    Microsoft.AspNetCore.Identity.EntityFrameworkCore (v9.0.x)
+      - Integrates ASP.NET Core Identity with Entity Framework Core.
+      - Provides user registration, login, password hashing, role management,
+        and cookie-based authentication.
 
 5.2 GOOGLE FONTS
 ----------------
-  The application uses three Google Fonts loaded via CDN:
+    The application uses three Google Fonts loaded via CDN:
 
-  Bellefair (serif)
-    - Used for headings, navigation links, labels and decorative text.
-    - Provides the elegant, tea-shop aesthetic.
+    Bellefair (serif)
+      - Used for headings, navigation links, labels and decorative text.
+      - Provides the elegant, tea-shop aesthetic.
 
-  Barlow (sans-serif)
-    - Used as the base body font for descriptions and general content.
-    - Clean and readable at small sizes.
+    Barlow (sans-serif)
+      - Used as the base body font for descriptions and general content.
+      - Clean and readable at small sizes.
 
-  Barlow Condensed (sans-serif condensed)
-    - Used specifically for product prices.
-    - The condensed style fits numerical values well.
+    Barlow Condensed (sans-serif condensed)
+      - Used specifically for product prices.
+      - The condensed style fits numerical values well.
 
-  Loaded in _Layout.cshtml via:
-  https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700
+    Loaded in _Layout.cshtml via:
+    https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700
     &family=Bellefair&family=Barlow:wght@400;700&display=swap
 
 5.3 DOCKER / AZURE SQL EDGE
 -----------------------------
-  Azure SQL Edge is a lightweight SQL Server engine designed for IoT and
-  edge computing, but used here because it supports ARM64 architecture
-  (Apple Silicon Macs). It runs as a Docker container:
+    Azure SQL Edge is a lightweight SQL Server engine designed for IoT and
+    edge computing, but used here because it supports ARM64 architecture
+    (Apple Silicon Macs). It runs as a Docker container:
 
-  docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=TeaShop123!
-    -p 1433:1433 --name sqlserver -d mcr.microsoft.com/azure-sql-edge
+    docker run -e ACCEPT_EULA=Y -e SA_PASSWORD=TeaShop123!
+      -p 1433:1433 --name sqlserver -d mcr.microsoft.com/azure-sql-edge
 
-  This provides a fully functional SQL Server instance on localhost:1433.
-
-================================================================================
-  6. FILE STRUCTURE
-================================================================================
-
-  TeaShop/                          (Solution root)
-  |-- TeaShop.sln                   (Solution file)
-  |-- .gitignore                    (Git ignore rules)
-  |
-  |-- TeaShop/                      (Project root)
-      |-- Program.cs                (Application entry point, DI configuration)
-      |-- appsettings.json          (Database connection string, app settings)
-      |
-      |-- Controllers/
-      |   |-- HomeController.cs     (Product catalog, filtering, search)
-      |   |-- AccountController.cs  (Auth, profile, password, delete account)
-      |   |-- CartController.cs     (Session cart: add, update, remove)
-      |   |-- OrderController.cs    (Checkout, confirmation, order history)
-      |   |-- AdminController.cs    (Product/category CRUD, order management)
-      |
-      |-- Models/
-      |   |-- ApplicationUser.cs    (Extended Identity user)
-      |   |-- Product.cs            (Tea product entity)
-      |   |-- Category.cs           (Product category entity)
-      |   |-- Order.cs              (Customer order entity)
-      |   |-- OrderItem.cs          (Order line item entity)
-      |   |-- CartItem.cs           (Session cart item, not a DB entity)
-      |   |-- Enums.cs              (CaffeineType, OrderStatus enums)
-      |
-      |-- ViewModels/
-      |   |-- ProductCatalogViewModel.cs
-      |   |-- ProductFormViewModel.cs
-      |   |-- LoginViewModel.cs
-      |   |-- RegisterViewModel.cs
-      |   |-- EditProfileViewModel.cs
-      |   |-- ChangePasswordViewModel.cs
-      |   |-- CheckoutViewModel.cs
-      |
-      |-- Data/
-      |   |-- TeaShopContext.cs      (EF Core DbContext)
-      |   |-- SeedData.cs           (Admin + product seeding)
-      |
-      |-- Helpers/
-      |   |-- SessionExtensions.cs  (Session JSON serialization)
-      |
-      |-- Migrations/               (EF Core migration files)
-      |
-      |-- Views/
-      |   |-- Home/Index.cshtml     (Product catalog)
-      |   |-- Account/              (Login, Register, Index, EditProfile,
-      |   |                          ChangePassword)
-      |   |-- Cart/Index.cshtml     (Shopping cart)
-      |   |-- Order/                (Checkout, Confirmation, History)
-      |   |-- Admin/                (Index, Products, CreateProduct,
-      |   |                          EditProduct, Orders, Categories,
-      |   |                          CreateCategory, EditCategory)
-      |   |-- Shared/
-      |       |-- _Layout.cshtml    (Master layout: header, nav, footer)
-      |       |-- _OrderSupportNotice.cshtml (Reusable contact notice)
-      |
-      |-- wwwroot/
-          |-- css/site.css          (All application styles, CSS variables)
-          |-- images/
-              |-- tea_bag.png       (Navigation logo)
-              |-- teas/             (Product images)
+    This provides a fully functional SQL Server instance on localhost:1433.
 
 ================================================================================
-  7. ADMIN CREDENTIALS
+    6. FILE STRUCTURE
 ================================================================================
 
-  Email:    admin@teashop.com
-  Password: admin@teashop.com
-
-  These credentials are seeded automatically on first application startup.
-  The admin account has full access to the administrative panel at /Admin.
+    TeaShop/                          (Solution root)
+    |-- TeaShop.sln                   (Solution file)
+    |-- .gitignore                    (Git ignore rules)
+    |
+    |-- TeaShop/                      (Project root)
+        |-- Program.cs                (Application entry point, DI configuration)
+        |-- appsettings.json          (Database connection string, app settings)
+        |
+        |-- Controllers/
+        |   |-- HomeController.cs     (Product catalog, filtering, search)
+        |   |-- AccountController.cs  (Auth, profile, password, delete account)
+        |   |-- CartController.cs     (Session cart: add, update, remove)
+        |   |-- OrderController.cs    (Checkout, confirmation, order history)
+        |   |-- AdminController.cs    (Product/category CRUD, order management)
+        |
+        |-- Models/
+        |   |-- ApplicationUser.cs    (Extended Identity user)
+        |   |-- Product.cs            (Tea product entity)
+        |   |-- Category.cs           (Product category entity)
+        |   |-- Order.cs              (Customer order entity)
+        |   |-- OrderItem.cs          (Order line item entity)
+        |   |-- CartItem.cs           (Session cart item, not a DB entity)
+        |   |-- Enums.cs              (CaffeineType, OrderStatus enums)
+        |
+        |-- ViewModels/
+        |   |-- ProductCatalogViewModel.cs
+        |   |-- ProductFormViewModel.cs
+        |   |-- LoginViewModel.cs
+        |   |-- RegisterViewModel.cs
+        |   |-- EditProfileViewModel.cs
+        |   |-- ChangePasswordViewModel.cs
+        |   |-- CheckoutViewModel.cs
+        |
+        |-- Data/
+        |   |-- TeaShopContext.cs      (EF Core DbContext)
+        |   |-- SeedData.cs           (Admin + product seeding)
+        |
+        |-- Helpers/
+        |   |-- SessionExtensions.cs  (Session JSON serialization)
+        |
+        |-- Migrations/               (EF Core migration files)
+        |
+        |-- Views/
+        |   |-- Home/Index.cshtml     (Product catalog)
+        |   |-- Account/              (Login, Register, Index, EditProfile,
+        |   |                          ChangePassword)
+        |   |-- Cart/Index.cshtml     (Shopping cart)
+        |   |-- Order/                (Checkout, Confirmation, History)
+        |   |-- Admin/                (Index, Products, CreateProduct,
+        |   |                          EditProduct, Orders, Categories,
+        |   |                          CreateCategory, EditCategory)
+        |   |-- Shared/
+        |       |-- _Layout.cshtml    (Master layout: header, nav, footer)
+        |       |-- _OrderSupportNotice.cshtml (Reusable contact notice)
+        |
+        |-- wwwroot/
+            |-- css/site.css          (All application styles, CSS variables)
+            |-- images/
+                |-- tea_bag.png       (Navigation logo)
+                |-- teas/             (Product images)
 
 ================================================================================
-                        END OF DOCUMENT
+    7. ADMIN CREDENTIALS
+================================================================================
+
+    Email:    admin@teashop.com
+    Password: admin@teashop.com
+
+    These credentials are seeded automatically on first application startup.
+    The admin account has full access to the administrative panel at /Admin.
+
+================================================================================
+                             END OF DOCUMENT
 ================================================================================
 

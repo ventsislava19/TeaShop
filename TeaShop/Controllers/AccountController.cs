@@ -13,9 +13,7 @@ public class AccountController : Controller
     private readonly SignInManager<ApplicationUser> _signInManager;
 
     // These are injected by the framework (DI), just like the DbContext was.
-    public AccountController(
-        UserManager<ApplicationUser> userManager,
-        SignInManager<ApplicationUser> signInManager)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -35,7 +33,7 @@ public class AccountController : Controller
 
     // POST: /Account/Register
     [HttpPost]
-    [ValidateAntiForgeryToken]  // CSRF protection  like a hidden token.
+    [ValidateAntiForgeryToken]  // CSRF protection like a hidden token.
     public async Task<IActionResult> Register(RegisterViewModel model)
     {
         if (!ModelState.IsValid)

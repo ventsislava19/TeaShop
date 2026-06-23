@@ -385,7 +385,7 @@ To run this application, the following must be installed:
 
     5. On first run, the database is automatically seeded with:
        - 33 tea products
-       - 1 admin account (admin@teashop.com / Admin123!)
+       - 1 admin account (admin@teashop.com / admin@teashop.com)
        - 1 "Teas" category
 
 4.3 PUBLIC FEATURES (GUEST USER)
